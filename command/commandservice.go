@@ -2,7 +2,7 @@ package command
 
 import (
     "github.com/isuruceanu/gocqrs"
-	"github.com/twinj/uuid"
+	
 )
 
 type CommandService struct {
@@ -23,9 +23,9 @@ func MakeCommandService(handlers gocqrs.CommandHandlerCollection,
 func (cs *CommandService) Execute(command gocqrs.Command) error  {
     
     //todo: check for an empty id
-    if command.GetCorrelationId == uuid.Empty {
-        command.SetCorrelationId(command.GetId())
-    }
+    // if command.GetCorrelationId {
+    //     command.SetCorrelationId(command.GetId())
+    // }
     
     cs.commandStore.Save(command)
    
